@@ -52,7 +52,7 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .btn.lg{padding:11px 24px;font-size:14px;font-weight:600;}
 .btn:disabled{opacity:.28;cursor:not-allowed;transform:none;}
 
-/* ── VOYAGE LAYOUT: grid LEFT, dpad+panel RIGHT ── */
+/* ── VOYAGE LAYOUT ── */
 .voyage-layout{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;}
 @media(max-width:900px){.voyage-layout{grid-template-columns:1fr;}}
 
@@ -82,14 +82,13 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .cell.current{border-color:var(--am);border-width:2px;background:rgba(240,168,64,.28);animation:glow 1.2s infinite;}
 .cell.current.hit{border-color:var(--rd);background:rgba(232,93,93,.32);}
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(240,168,64,.5);}50%{box-shadow:0 0 0 6px rgba(240,168,64,0);}}
-@keyframes hitpop{0%{transform:scale(1.25);}100%{transform:scale(1);}}
 
 /* RIGHT PANEL */
 .right-panel{display:flex;flex-direction:column;gap:12px;min-width:300px;max-width:400px;}
 .phase-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.04em;background:var(--amb);border:1px solid var(--am);color:var(--amt);}
 .phase-dot{width:7px;height:7px;border-radius:50%;background:var(--am);animation:glow 1.2s infinite;}
 
-/* dpad — now shown inside right panel but visually beside grid */
+/* D-PAD */
 .dpad-area{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:4px;}
 .dpad-row{display:flex;gap:4px;}
 .dpad{
@@ -138,8 +137,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
   animation:modalin .3s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes modalin{0%{transform:scale(.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
-.ship-modal-box .boom{font-size:56px;margin-bottom:8px;animation:boom .4s ease;}
-@keyframes boom{0%{transform:scale(.5)rotate(-15deg);}60%{transform:scale(1.2)rotate(5deg);}100%{transform:scale(1)rotate(0);}  }
 .ship-modal-box h2{font-family:var(--display);font-size:18px;color:var(--rdt);letter-spacing:.06em;margin-bottom:6px;}
 .ship-modal-box p{font-size:13px;color:var(--mu);margin-bottom:20px;line-height:1.5;}
 .ship-modal-box .coords{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--amt);margin-bottom:18px;}
@@ -148,7 +145,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .settings-layout{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start;}
 @media(max-width:860px){.settings-layout{grid-template-columns:1fr;}}
 
-/* mini grid */
 .mini-cell{
   width:30px;height:30px;border-radius:3px;cursor:pointer;
   background:var(--s2);border:1px solid var(--bd);
@@ -158,7 +154,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 }
 .mini-cell:hover{background:var(--s3);border-color:var(--bd2);}
 
-/* tool palette */
 .palette{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
 .pal-opt{
   width:38px;height:38px;border-radius:var(--r);cursor:pointer;
@@ -181,13 +176,11 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .lbpts{font-size:17px;font-weight:600;font-family:var(--mono);text-align:right;min-width:46px;color:var(--glt);}
 .lbpts small{font-size:10px;color:var(--mu);font-weight:400;display:block;text-align:right;}
 
-/* team editor rows */
 .team-edit-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--bd);}
 .team-edit-row:last-child{border:none;}
 .team-edit-row input{flex:1;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:6px 10px;color:var(--tx);font-family:var(--font);font-size:13px;}
 .team-edit-row input:focus{outline:none;border-color:var(--am);}
 
-/* conflict / toast */
 #conflict-banner{display:none;position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#2a1f06;border:1px solid var(--am);border-radius:var(--rl);padding:9px 16px;font-size:12px;color:var(--amt);z-index:600;max-width:360px;text-align:center;}
 #conflict-banner.on{display:block;}
 #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(50px);background:var(--s2);border:1px solid var(--bd2);border-radius:20px;padding:7px 18px;font-size:12px;color:var(--tx);opacity:0;pointer-events:none;z-index:400;white-space:nowrap;transition:transform .2s,opacity .2s;}
@@ -216,7 +209,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 <div id="conflict-banner">⚠️ Write conflict — merged automatically.</div>
 <div id="toast"></div>
 
-<!-- ════ SHIP FOUND MODAL ════ -->
 <div id="ship-modal">
   <div class="ship-modal-box">
     <div class="boom">💥</div>
@@ -229,11 +221,9 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 
 <div class="wrap">
 
-<!-- ════════════ VOYAGE ════════════ -->
 <div id="view-voyage" class="view on">
   <div class="voyage-layout">
 
-    <!-- LEFT: Sea grid + dpad below -->
     <div>
       <div class="grid-wrap">
         <div class="grid-header">
@@ -249,7 +239,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
         </div>
       </div>
 
-      <!-- D-PAD directly below grid -->
       <div id="dpad-container" style="display:none;margin-top:12px;">
         <div style="background:var(--s1);border:1px solid var(--bd2);border-radius:var(--rl);padding:14px;width:max-content;">
           <div class="info-row" style="margin-bottom:12px;min-width:230px;">
@@ -278,20 +267,16 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
       </div>
     </div>
 
-    <!-- RIGHT: Control panel -->
     <div class="right-panel">
-
       <div>
         <div class="phase-badge"><div class="phase-dot"></div><span id="phase-text">Ready to sail</span></div>
       </div>
 
-      <!-- ① Team -->
       <div class="card" id="panel-team">
         <div class="ttl" style="margin-bottom:8px;">① Select crew</div>
         <div class="team-grid" id="team-grid"></div>
       </div>
 
-      <!-- ② Steps -->
       <div class="card" id="panel-steps" style="opacity:.35;pointer-events:none;">
         <div class="ttl" style="margin-bottom:8px;">② Sailing points earned</div>
         <div style="display:flex;gap:8px;align-items:center;">
@@ -301,19 +286,16 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
         </div>
       </div>
 
-      <!-- ③ Start hint -->
       <div class="card" id="panel-start" style="display:none;border-color:var(--am);">
         <div class="ttl" style="margin-bottom:4px;color:var(--amt);">③ Choose starting square</div>
         <p style="font-size:12px;color:var(--mu);">Click any square on the sea chart to place your ship 🚢</p>
       </div>
 
-      <!-- ④ Nav log (shown during navigation) -->
       <div class="card" id="panel-nav" style="display:none;">
         <div class="ttl" style="margin-bottom:6px;">④ Voyage log</div>
         <div class="vlog" id="vlog"></div>
       </div>
 
-      <!-- Voyage complete -->
       <div class="card" id="panel-done" style="display:none;border-color:var(--gn);">
         <div style="text-align:center;padding:8px 0;">
           <div style="font-size:32px;margin-bottom:6px;">🏴‍☠️</div>
@@ -332,37 +314,28 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ════════════ LEADERBOARD ════════════ -->
 <div id="view-board" class="view">
   <div class="ttl" style="margin-bottom:12px;">Teams ranked by total points</div>
   <div class="lb" id="lb"></div>
 </div>
 
-<!-- ════════════ SETTINGS ════════════ -->
 <div id="view-settings" class="view">
   <div class="settings-layout">
-
     <div>
-      <!-- Fleet map editor -->
       <div class="card" style="margin-bottom:14px;">
         <div class="ttl" style="margin-bottom:8px;">Fleet map editor — 10×10 grid</div>
         <p style="font-size:12px;color:var(--mu);margin-bottom:12px;">Click cells to place/remove. Ships are hidden from crews during voyages.</p>
-
         <div class="ttl" style="margin-bottom:6px;">Active tool</div>
         <div class="palette" id="tool-palette"></div>
         <div style="font-size:11px;color:var(--mu);margin-bottom:12px;" id="tool-info">Select a tool above</div>
-
-        <!-- Mini grid -->
         <div style="overflow-x:auto;">
           <div id="mini-col-labels" style="display:flex;gap:2px;margin-left:22px;margin-bottom:2px;"></div>
           <div id="mini-grid"></div>
         </div>
-
         <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
           <button class="btn am" onclick="clearFleet('ship')">Clear all ships</button>
           <button class="btn" onclick="clearFleet('landmark')">Clear landmarks</button>
@@ -370,8 +343,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
         </div>
         <div style="margin-top:8px;font-size:11px;color:var(--mu);" id="ship-count-label"></div>
       </div>
-
-      <!-- Danger zone -->
       <div class="card">
         <div class="ttl" style="margin-bottom:8px;">Danger zone</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -381,9 +352,7 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
         </div>
       </div>
     </div>
-
     <div>
-      <!-- Team manager -->
       <div class="card" style="margin-bottom:14px;">
         <div class="ttl" style="margin-bottom:8px;">Teams</div>
         <div id="team-editor" style="margin-bottom:10px;"></div>
@@ -392,35 +361,26 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
           <button class="btn gn" onclick="addTeam()">+ Add team</button>
         </div>
       </div>
-
-      <!-- Legend -->
       <div class="card" style="margin-bottom:14px;">
         <div class="ttl" style="margin-bottom:8px;">Legend</div>
         <div style="font-size:12px;line-height:2;" id="legend-list"></div>
       </div>
-
-      <!-- Fleet stats -->
       <div class="card">
         <div class="ttl" style="margin-bottom:8px;">Fleet stats</div>
         <div id="fleet-stats" style="font-size:12px;color:var(--mu);line-height:1.9;font-family:var(--mono);"></div>
       </div>
     </div>
-
   </div>
 </div>
 
-</div><!-- /wrap -->
-</div><!-- /shell -->
+</div>
+</div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-// CONSTANTS
-// ═══════════════════════════════════════════════════════
 const COLS = ['A','B','C','D','E','F','G','H','I','J'];
 const GRID  = 10;
 const FB    = 'https://ahis-lsc-2627-d2-default-rtdb.asia-southeast1.firebasedatabase.app/pirate_fleet';
 
-// All landmark types  {key, emoji, label, bg, border}
 const LANDMARKS = [
   {key:'island',  emoji:'🏝', label:'Island',    bg:'rgba(45,212,191,0.14)', bd:'#2dd4bf'},
   {key:'rocks',   emoji:'🪨', label:'Rocks',     bg:'rgba(148,163,184,0.14)',bd:'#94a3b8'},
@@ -430,7 +390,6 @@ const LANDMARKS = [
   {key:'skull',   emoji:'💀', label:'Skull Rock',bg:'rgba(232,93,93,0.14)',  bd:'#e85d5d'},
 ];
 
-// Tools: ship + each landmark + clear
 const TOOLS = [
   {key:'ship',  emoji:'⚓', label:'Battleship',  bg:'rgba(245,200,66,0.14)', bd:'#f5c842'},
   ...LANDMARKS,
@@ -444,9 +403,6 @@ const DEFAULT_TEAMS = [
   'Red Sails','Cape Fear','Bone Isle','Shark Bay','Ghost Ship'
 ];
 
-// ═══════════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════════
 let DB = null;
 let fbPoll = null;
 let isSaving = false;
@@ -459,9 +415,6 @@ let voyage = {
   phase:'select-team',
 };
 
-// ═══════════════════════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════════════════════
 function mkDefault(){
   const teams = DEFAULT_TEAMS.map((name,i)=>({id:i,name,points:0,shipsFound:0,stepsUsed:0,voyagesDone:0}));
   const grid  = Array(100).fill(null);
@@ -470,7 +423,18 @@ function mkDefault(){
 
 function ensureSchema(d){
   if(!d)return mkDefault();
-  if(!d.grid||d.grid.length!==100)d.grid=Array(100).fill(null);
+  
+  // FIXED: Safely parsing coerced standard array or sparse object configurations from Firebase
+  let finalGrid = Array(100).fill(null);
+  if(d.grid){
+    for(let i=0; i<100; i++){
+      if(d.grid[i] !== undefined && d.grid[i] !== null){
+        finalGrid[i] = d.grid[i];
+      }
+    }
+  }
+  d.grid = finalGrid;
+  
   if(typeof d.version!=='number')d.version=0;
   d.teams=(d.teams||[]).map((t,i)=>({
     id:typeof t.id==='number'?t.id:i,
@@ -485,15 +449,9 @@ function ci(r,c){return r*GRID+c;}
 function cellKey(r,c){return COLS[c]+(r+1);}
 function lmInfo(key){return LANDMARKS.find(l=>l.key===key)||null;}
 
-// ═══════════════════════════════════════════════════════
-// STORAGE
-// ═══════════════════════════════════════════════════════
 function lsLoad(){try{const r=localStorage.getItem('pf2');return r?JSON.parse(r):null;}catch(e){return null;}}
 function lsSave(d){try{localStorage.setItem('pf2',JSON.stringify(d));}catch(e){}}
 
-// ═══════════════════════════════════════════════════════
-// FIREBASE
-// ═══════════════════════════════════════════════════════
 async function fbGet(){
   try{
     const r=await fetch(FB+'.json',{headers:{Accept:'application/json'}});
@@ -573,9 +531,6 @@ function setSS(s,lbl){
 }
 let ct;function showConflict(){const b=document.getElementById('conflict-banner');b.classList.add('on');clearTimeout(ct);ct=setTimeout(()=>b.classList.remove('on'),3500);}
 
-// ═══════════════════════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════════════════════
 const VIEWS=['voyage','board','settings'];
 function go(v){
   document.querySelectorAll('.ntab').forEach((el,i)=>el.classList.toggle('on',VIEWS[i]===v));
@@ -586,9 +541,6 @@ function go(v){
   if(v==='voyage')renderSeaGrid();
 }
 
-// ═══════════════════════════════════════════════════════
-// SEA GRID
-// ═══════════════════════════════════════════════════════
 function renderSeaGrid(){
   const clr=document.getElementById('col-labels-row');
   clr.innerHTML=`<div style="width:22px;flex-shrink:0;"></div>`+
@@ -605,13 +557,11 @@ function renderSeaGrid(){
       const cell=document.createElement('div');
       cell.className='cell';
       cell.id=`cell-${r}-${c}`;
-      // Landmark visible; ship hidden
       const val=DB.grid[ci(r,c)];
       if(val&&val!=='ship'){
         const lm=lmInfo(val);
         if(lm)cell.textContent=lm.emoji;
       }
-      // Voyage overlays
       applyCellOverlay(cell,r,c);
       cell.addEventListener('click',()=>onCellClick(r,c));
       row.appendChild(cell);
@@ -621,7 +571,6 @@ function renderSeaGrid(){
 }
 
 function applyCellOverlay(cell,r,c){
-  // Remove voyage classes first
   cell.classList.remove('trail','start','hit','current','start-hover');
   const isHit=voyage.hits.some(p=>p.r===r&&p.c===c);
   const isTrail=voyage.trail.some(p=>p.r===r&&p.c===c);
@@ -634,10 +583,8 @@ function applyCellOverlay(cell,r,c){
   if(isStart)cell.classList.add('start');
   if(isCurrent)cell.classList.add('current');
 
-  // Show hit emoji override
   if(isHit){cell.textContent='💥';}
   else if(!isHit){
-    // restore landmark if applicable
     const val=DB.grid[ci(r,c)];
     if(val&&val!=='ship'){const lm=lmInfo(val);if(lm)cell.textContent=lm.emoji;}
     else if(!val)cell.textContent='';
@@ -657,9 +604,6 @@ function onCellClick(r,c){
   if(voyage.phase==='choose-start')setStart(r,c);
 }
 
-// ═══════════════════════════════════════════════════════
-// VOYAGE FLOW
-// ═══════════════════════════════════════════════════════
 function renderTeamPanel(){
   document.getElementById('team-grid').innerHTML=DB.teams.map(t=>
     `<button class="tbtn${voyage.teamId===t.id?' sel':''}" onclick="selectTeam(${t.id})">
@@ -712,7 +656,6 @@ function setStart(r,c){
 
 function move(dir){
   if(voyage.stepsLeft<=0||voyage.phase!=='navigate')return;
-  // Close any open modal first
   if(document.getElementById('ship-modal').classList.contains('on'))return;
 
   const{r,c}=voyage.currentPos;
@@ -737,7 +680,6 @@ function move(dir){
   }
   voyage.trail.push({r:nr,c:nc});
 
-  // Update both old and new cells
   updateCell(old.r,old.c);
   updateCell(nr,nc);
 
@@ -778,20 +720,18 @@ function renderVoyageLog(){
   ).join('');
 }
 
-// ── Ship found modal ──
 function showShipModal(r,c,totalFound){
   const key=cellKey(r,c);
   document.getElementById('modal-coords').textContent=key;
   document.getElementById('modal-msg').textContent=
     `Total ships found this voyage: ${totalFound}. You've earned ${totalFound} point${totalFound!==1?'s':''} so far!`;
   document.getElementById('ship-modal').classList.add('on');
-  // Disable dpad while modal open
   ['d-up','d-down','d-left','d-right'].forEach(id=>document.getElementById(id).disabled=true);
 }
 
 function closeShipModal(){
   document.getElementById('ship-modal').classList.remove('on');
-  updateNavPanel(); // re-enable correct buttons
+  updateNavPanel();
   if(voyage.stepsLeft===0)finishVoyage();
 }
 
@@ -807,8 +747,7 @@ function finishVoyage(){
     `${tname} · ${pts} ship${pts!==1?'s':''} found · ${stepsUsed} steps used`;
   const op={type:'recordVoyage',teamId:voyage.teamId,points:pts,shipsFound:voyage.hits.length,stepsUsed};
   DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
-  addLog(`Voyage done — ${pts} pts earned`,'done');
-  // disable dpad
+  addLog(`Campania done — ${pts} pts earned`,'done');
   ['d-up','d-down','d-left','d-right'].forEach(id=>document.getElementById(id).disabled=true);
 }
 
@@ -846,9 +785,6 @@ function resetVoyage(){
 
 function setPhase(t){document.getElementById('phase-text').textContent=t;}
 
-// ═══════════════════════════════════════════════════════
-// LEADERBOARD
-// ═══════════════════════════════════════════════════════
 function renderBoard(){
   const teams=[...DB.teams].sort((a,b)=>(b.points||0)-(a.points||0));
   const medals=['🥇','🥈','🥉'];
@@ -866,9 +802,6 @@ function renderBoard(){
   ).join('');
 }
 
-// ═══════════════════════════════════════════════════════
-// SETTINGS — TOOL PALETTE
-// ═══════════════════════════════════════════════════════
 function renderToolPalette(){
   const pal=document.getElementById('tool-palette');
   pal.innerHTML=TOOLS.map(t=>
@@ -891,9 +824,6 @@ function updateToolInfo(){
   document.getElementById('tool-info').textContent=`Tool: ${t.label} (${t.emoji}) — click cells to place / toggle off`;
 }
 
-// ═══════════════════════════════════════════════════════
-// SETTINGS — MINI GRID
-// ═══════════════════════════════════════════════════════
 function renderMiniGrid(){
   const mcl=document.getElementById('mini-col-labels');
   mcl.innerHTML=`<div style="width:22px;flex-shrink:0;"></div>`+
@@ -941,14 +871,13 @@ function miniToggle(r,c){
   if(activeTool==='clear') newVal=null;
   else if(activeTool==='ship') newVal=cur==='ship'?null:'ship';
   else{
-    // landmark
     newVal=cur===activeTool?null:activeTool;
   }
   const op={type:'setGrid',idx,val:newVal};
   DB=applyOp(DB,op);lsSave(DB);
   const cell=document.getElementById(`mc-${r}-${c}`);
   if(cell)setMiniCellContent(cell,newVal);
-  updateCell(r,c); // update voyage grid too
+  updateCell(r,c);
   renderFleetStats();
   atomicWrite(op);
 }
@@ -982,9 +911,6 @@ function renderLegend(){
     `<div>💥 Ship discovered!</div>`;
 }
 
-// ═══════════════════════════════════════════════════════
-// SETTINGS — TEAM MANAGER (add / rename / delete)
-// ═══════════════════════════════════════════════════════
 function renderTeamEditor(){
   const el=document.getElementById('team-editor');
   el.innerHTML=DB.teams.map(t=>
@@ -1025,16 +951,10 @@ function deleteTeam(id){
   renderTeamEditor();renderTeamPanel();toast('Team deleted');
 }
 
-// ═══════════════════════════════════════════════════════
-// DANGER ZONE
-// ═══════════════════════════════════════════════════════
 function resetAllVoyages(){if(!confirm('Reset voyage stats for all teams?'))return;const op={type:'resetVoyages'};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);toast('Voyage stats reset');}
 function resetAllPoints(){if(!confirm('Reset all points to 0?'))return;const op={type:'resetPoints'};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);toast('Points reset');}
 function resetEverything(){if(!confirm('Reset EVERYTHING — grid, teams, points?'))return;const op={type:'resetAll'};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);resetVoyage();renderMiniGrid();renderTeamEditor();toast('Everything reset');}
 
-// ═══════════════════════════════════════════════════════
-// RENDER ALL
-// ═══════════════════════════════════════════════════════
 function renderAll(){
   renderTeamPanel();
   renderSeaGrid();
@@ -1044,27 +964,26 @@ function renderAll(){
   }
 }
 
-// ═══════════════════════════════════════════════════════
-// TOAST
-// ═══════════════════════════════════════════════════════
 let tt;
 function toast(m){const e=document.getElementById('toast');e.textContent=m;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),2600);}
 
-// ═══════════════════════════════════════════════════════
-// BOOT
-// ═══════════════════════════════════════════════════════
 (async function boot(){
   DB=ensureSchema(lsLoad()||mkDefault());
   renderAll();
   setSS('w','Connecting…');
   const got=await fbGet();
-  if(got&&got.data){
-    const remote=ensureSchema(got.data);
-    if((remote.version||0)>=(DB.version||0)){DB=remote;lsSave(DB);renderAll();}
-    else await fbPut(DB,got.etag);
+  if(got){
+    if(got.data){
+      const remote=ensureSchema(got.data);
+      if((remote.version||0)>=(DB.version||0)){DB=remote;lsSave(DB);renderAll();}
+      else await fbPut(DB,got.etag);
+    } else {
+      // FIXED: Database node initialization on fresh environments
+      await fbPut(DB,got.etag);
+    }
     setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());
   }else{
-    setSS(got?'ok':'e',got?'Synced':'Cannot reach Firebase');
+    setSS('e','Cannot reach Firebase');
   }
   startPoll();
 })();
