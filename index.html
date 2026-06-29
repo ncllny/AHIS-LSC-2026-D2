@@ -38,8 +38,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .view{display:none;}.view.on{display:block;}
 .ttl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:10px;}
 .card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);padding:16px;}
-
-/* BUTTONS */
 .btn{padding:7px 14px;border-radius:var(--r);font-size:13px;font-family:var(--font);font-weight:500;cursor:pointer;border:1px solid var(--bd2);background:var(--s2);color:var(--tx);transition:background .13s,transform .1s;white-space:nowrap;}
 .btn:hover{background:var(--s3);}.btn:active{transform:scale(.97);}
 .btn.am{background:var(--amb);border-color:var(--am);color:var(--amt);}
@@ -51,37 +49,18 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .btn.sm{padding:4px 9px;font-size:11px;}
 .btn.lg{padding:11px 24px;font-size:14px;font-weight:600;}
 .btn:disabled{opacity:.28;cursor:not-allowed;transform:none;}
-
-/* ── VOYAGE LAYOUT ── */
 .voyage-layout{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;}
 @media(max-width:900px){.voyage-layout{grid-template-columns:1fr;}}
-
-/* ── SEA GRID ── */
 .grid-wrap{background:var(--s1);border:1px solid var(--bd2);border-radius:var(--rl);overflow:hidden;width:max-content;}
 .grid-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--bd);gap:10px;}
 .grid-header h3{font-family:var(--display);font-size:12px;color:var(--amt);letter-spacing:.05em;}
 .grid-outer{padding:10px;overflow-x:auto;}
-  
-.col-labels-row{
-    display:flex;
-    gap:2px;
-    margin-left:22px;
-    margin-bottom:2px;
-    transform:translateX(-2px);
-}
-  
+/* FIX: removed margin-left and transform; spacer div in JS handles the offset */
+.col-labels-row{display:flex;gap:2px;margin-bottom:2px;}
 .col-label{width:36px;height:16px;display:flex;align-items:center;justify-content:center;font-size:10px;font-family:var(--mono);color:var(--mu);}
 .grid-row{display:flex;gap:2px;align-items:center;}
 .row-label{width:22px;height:36px;display:flex;align-items:center;justify-content:center;font-size:10px;font-family:var(--mono);color:var(--mu);flex-shrink:0;}
-.cell{
-  width:36px;height:36px;border-radius:4px;cursor:pointer;
-  background:var(--s2);border:1px solid var(--bd);
-  display:flex;align-items:center;justify-content:center;font-size:14px;
-  transition:background .1s,border-color .1s,transform .1s;
-  position:relative;flex-shrink:0;
-  background-image:linear-gradient(135deg,rgba(58,155,220,.06) 0%,transparent 60%);
-  user-select:none;
-}
+.cell{width:36px;height:36px;border-radius:4px;cursor:pointer;background:var(--s2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:14px;transition:background .1s,border-color .1s,transform .1s;position:relative;flex-shrink:0;background-image:linear-gradient(135deg,rgba(58,155,220,.06) 0%,transparent 60%);user-select:none;}
 .cell:hover{background:var(--s3);border-color:var(--bd2);transform:scale(1.07);z-index:2;}
 .cell.start-hover:hover{border-color:var(--am);background:var(--amb);}
 .cell.trail{background:rgba(58,155,220,.13);border-color:rgba(58,155,220,.32);}
@@ -90,55 +69,28 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .cell.current{border-color:var(--am);border-width:2px;background:rgba(240,168,64,.28);animation:glow 1.2s infinite;}
 .cell.current.hit{border-color:var(--rd);background:rgba(232,93,93,.32);}
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(240,168,64,.5);}50%{box-shadow:0 0 0 6px rgba(240,168,64,0);}}
-
-/* RIGHT PANEL */
 .right-panel{display:flex;flex-direction:column;gap:12px;min-width:300px;max-width:400px;}
 .phase-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.04em;background:var(--amb);border:1px solid var(--am);color:var(--amt);}
 .phase-dot{width:7px;height:7px;border-radius:50%;background:var(--am);animation:glow 1.2s infinite;}
-
-/* DPAD AREA */
 .dpad-area{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:4px;}
 .dpad-row{display:flex;gap:4px;}
-.dpad{
-  width:58px;height:58px;border-radius:var(--r);font-size:24px;
-  background:var(--s2);border:1px solid var(--bd2);color:var(--tx);
-  cursor:pointer;transition:background .12s,transform .1s;display:flex;align-items:center;justify-content:center;
-}
+.dpad{width:58px;height:58px;border-radius:var(--r);font-size:24px;background:var(--s2);border:1px solid var(--bd2);color:var(--tx);cursor:pointer;transition:background .12s,transform .1s;display:flex;align-items:center;justify-content:center;}
 .dpad:hover:not(:disabled){background:var(--amb);border-color:var(--am);transform:scale(1.08);}
 .dpad:active:not(:disabled){transform:scale(.95);}
 .dpad:disabled{opacity:.18;cursor:not-allowed;}
 .dpad-mid{width:58px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono);font-size:16px;font-weight:600;color:var(--amt);line-height:1.1;}
 .dpad-mid small{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;}
-
-/* INFO BOXES */
 .info-row{display:flex;gap:6px;}
 .info-box{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:8px 10px;text-align:center;}
 .info-val{font-size:20px;font-weight:600;font-family:var(--mono);color:var(--amt);}
 .info-lbl{font-size:9px;color:var(--mu);letter-spacing:.05em;text-transform:uppercase;margin-top:2px;}
-
-/* Steps Left Highlight Emphasis */
-.info-box.steps-highlight {
-  background: linear-gradient(135deg, rgba(240,168,64,0.25) 0%, var(--s2) 100%);
-  border: 2px solid var(--am);
-  box-shadow: 0 0 10px rgba(240, 168, 64, 0.2);
-}
-.info-box.steps-highlight .info-val {
-  font-size: 28px;
-  color: var(--am);
-  text-shadow: 0 0 8px rgba(240, 168, 64, 0.4);
-}
-.info-box.steps-highlight .info-lbl {
-  color: var(--amt);
-  font-weight: 600;
-}
-
-/* TEAM GRID */
+.info-box.steps-highlight{background:linear-gradient(135deg,rgba(240,168,64,0.25) 0%,var(--s2) 100%);border:2px solid var(--am);box-shadow:0 0 10px rgba(240,168,64,0.2);}
+.info-box.steps-highlight .info-val{font-size:28px;color:var(--am);text-shadow:0 0 8px rgba(240,168,64,0.4);}
+.info-box.steps-highlight .info-lbl{color:var(--amt);font-weight:600;}
 .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:5px;}
 .tbtn{background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:7px 10px;cursor:pointer;font-family:var(--font);font-size:12px;font-weight:500;color:var(--tx);transition:border-color .13s,background .13s;display:flex;align-items:center;gap:5px;}
 .tbtn:hover{background:var(--s3);border-color:var(--bd2);}
 .tbtn.sel{border-color:var(--am);background:var(--amb);color:var(--amt);}
-
-/* VOYAGE LOG */
 .vlog{background:var(--bg);border:1px solid var(--bd);border-radius:var(--r);max-height:140px;overflow-y:auto;font-family:var(--mono);font-size:11px;}
 .vlog-row{display:flex;gap:7px;padding:5px 9px;border-bottom:1px solid var(--bd);}
 .vlog-row:last-child{border:none;}
@@ -146,51 +98,22 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .vlog-msg{color:var(--tx);flex:1;}
 .vlog-msg.hit{color:var(--rdt);}
 .vlog-msg.done{color:var(--gnt);}
-
-/* SHIP FOUND MODAL */
-#ship-modal{
-  display:none;position:fixed;inset:0;z-index:500;
-  background:rgba(0,0,0,.7);backdrop-filter:blur(4px);
-  align-items:center;justify-content:center;
-}
+#ship-modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);align-items:center;justify-content:center;}
 #ship-modal.on{display:flex;}
-.ship-modal-box{
-  background:var(--s1);border:2px solid var(--rd);border-radius:16px;
-  padding:32px 28px;text-align:center;max-width:320px;width:90%;
-  animation:modalin .3s cubic-bezier(.34,1.56,.64,1);
-}
+.ship-modal-box{background:var(--s1);border:2px solid var(--rd);border-radius:16px;padding:32px 28px;text-align:center;max-width:320px;width:90%;animation:modalin .3s cubic-bezier(.34,1.56,.64,1);}
 @keyframes modalin{0%{transform:scale(.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
 .ship-modal-box .boom{font-size:56px;margin-bottom:8px;}
 .ship-modal-box h2{font-family:var(--display);font-size:18px;color:var(--rdt);letter-spacing:.06em;margin-bottom:6px;}
 .ship-modal-box p{font-size:13px;color:var(--mu);margin-bottom:20px;line-height:1.5;}
 .ship-modal-box .coords{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--amt);margin-bottom:18px;}
-
-/* SETTINGS LAYOUT */
 .settings-layout{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start;}
 @media(max-width:860px){.settings-layout{grid-template-columns:1fr;}}
-
-/* MINI GRID */
-.mini-cell{
-  width:30px;height:30px;border-radius:3px;cursor:pointer;
-  background:var(--s2);border:1px solid var(--bd);
-  display:flex;align-items:center;justify-content:center;font-size:14px;
-  transition:background .1s,border-color .1s;flex-shrink:0;
-  background-image:linear-gradient(135deg,rgba(58,155,220,.05) 0%,transparent 60%);
-}
+.mini-cell{width:30px;height:30px;border-radius:3px;cursor:pointer;background:var(--s2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:14px;transition:background .1s,border-color .1s;flex-shrink:0;background-image:linear-gradient(135deg,rgba(58,155,220,.05) 0%,transparent 60%);}
 .mini-cell:hover{background:var(--s3);border-color:var(--bd2);}
-
-/* TOOL PALETTE */
 .palette{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
-.pal-opt{
-  width:38px;height:38px;border-radius:var(--r);cursor:pointer;
-  border:2px solid var(--bd2);background:var(--s2);
-  transition:transform .12s,border-color .12s;
-  display:flex;align-items:center;justify-content:center;font-size:18px;
-}
+.pal-opt{width:38px;height:38px;border-radius:var(--r);cursor:pointer;border:2px solid var(--bd2);background:var(--s2);transition:transform .12s,border-color .12px;display:flex;align-items:center;justify-content:center;font-size:18px;}
 .pal-opt:hover{transform:scale(1.12);}
 .pal-opt.sel{border-color:var(--am);background:var(--amb);}
-
-/* LEADERBOARD */
 .lb{background:var(--s1);border:1px solid var(--bd);border-radius:var(--rl);overflow:hidden;}
 .lbrow{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--bd);transition:background .1s;}
 .lbrow:last-child{border:none;}
@@ -201,13 +124,10 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 .lbstat{font-size:11px;font-family:var(--mono);padding:2px 7px;border-radius:10px;}
 .lbpts{font-size:17px;font-weight:600;font-family:var(--mono);text-align:right;min-width:46px;color:var(--glt);}
 .lbpts small{font-size:10px;color:var(--mu);font-weight:400;display:block;text-align:right;}
-
-/* TEAM EDITOR */
 .team-edit-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--bd);}
 .team-edit-row:last-child{border:none;}
 .team-edit-row input{flex:1;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);padding:6px 10px;color:var(--tx);font-family:var(--font);font-size:13px;}
 .team-edit-row input:focus{outline:none;border-color:var(--am);}
-
 #conflict-banner{display:none;position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#2a1f06;border:1px solid var(--am);border-radius:var(--rl);padding:9px 16px;font-size:12px;color:var(--amt);z-index:600;max-width:360px;text-align:center;}
 #conflict-banner.on{display:block;}
 #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(50px);background:var(--s2);border:1px solid var(--bd2);border-radius:20px;padding:7px 18px;font-size:12px;color:var(--tx);opacity:0;pointer-events:none;z-index:400;white-space:nowrap;transition:transform .2s,opacity .2s;}
@@ -250,7 +170,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 
 <div id="view-voyage" class="view on">
   <div class="voyage-layout">
-
     <div>
       <div class="grid-wrap">
         <div class="grid-header">
@@ -298,12 +217,10 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
       <div>
         <div class="phase-badge"><div class="phase-dot"></div><span id="phase-text">Ready to sail</span></div>
       </div>
-
       <div class="card" id="panel-team">
         <div class="ttl" style="margin-bottom:8px;">① Select crew</div>
         <div class="team-grid" id="team-grid"></div>
       </div>
-
       <div class="card" id="panel-steps" style="opacity:.35;pointer-events:none;">
         <div class="ttl" style="margin-bottom:8px;">② Sailing points earned</div>
         <div style="display:flex;gap:8px;align-items:center;">
@@ -312,17 +229,14 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
           <button class="btn am" style="height:52px;padding:0 16px;font-size:14px;" onclick="confirmSteps()">Set ⚓</button>
         </div>
       </div>
-
       <div class="card" id="panel-start" style="display:none;border-color:var(--am);">
         <div class="ttl" style="margin-bottom:4px;color:var(--amt);">③ Choose starting square</div>
         <p style="font-size:12px;color:var(--mu);">Click any square on the sea chart to place your ship 🚢</p>
       </div>
-
       <div class="card" id="panel-nav" style="display:none;">
         <div class="ttl" style="margin-bottom:6px;">④ Voyage log</div>
         <div class="vlog" id="vlog"></div>
       </div>
-
       <div class="card" id="panel-done" style="display:none;border-color:var(--gn);">
         <div style="text-align:center;padding:8px 0;">
           <div style="font-size:32px;margin-bottom:6px;">🏴‍☠️</div>
@@ -342,7 +256,6 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -361,7 +274,8 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
         <div class="palette" id="tool-palette"></div>
         <div style="font-size:11px;color:var(--mu);margin-bottom:12px;" id="tool-info">Select a tool above</div>
         <div style="overflow-x:auto;">
-          <div id="mini-col-labels" style="display:flex;gap:2px;margin-left:22px;margin-bottom:2px;"></div>
+          <!-- FIX: margin-left removed; spacer div in renderMiniGrid() aligns labels with cells -->
+          <div id="mini-col-labels" style="display:flex;gap:2px;margin-bottom:2px;"></div>
           <div id="mini-grid"></div>
         </div>
         <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
@@ -402,12 +316,10 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
           <button class="btn gn" onclick="addTeam()">+ Add team</button>
         </div>
       </div>
-
       <div class="card" style="margin-bottom:14px;">
         <div class="ttl" style="margin-bottom:8px;">Legend</div>
         <div style="font-size:12px;line-height:2;" id="legend-list"></div>
       </div>
-
       <div class="card">
         <div class="ttl" style="margin-bottom:8px;">Fleet stats</div>
         <div id="fleet-stats" style="font-size:12px;color:var(--mu);line-height:1.9;font-family:var(--mono);white-space:pre-wrap;"></div>
@@ -422,23 +334,21 @@ nav{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 18px;displa
 <script>
 const COLS = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'];
 let GRID  = 10;
-const FB    = 'https://ahis-lsc-2627-d2-default-rtdb.asia-southeast1.firebasedatabase.app/pirate_fleet';
+const FB  = 'https://ahis-lsc-2627-d2-default-rtdb.asia-southeast1.firebasedatabase.app/pirate_fleet';
 
 const LANDMARKS = [
-  {key:'island',  emoji:'🏝', label:'Island',    bg:'rgba(45,212,191,0.14)', bd:'#2dd4bf'},
-  {key:'rocks',   emoji:'🪨', label:'Rocks',     bg:'rgba(148,163,184,0.14)',bd:'#94a3b8'},
-  {key:'reef',    emoji:'🌊', label:'Reef',      bg:'rgba(58,155,220,0.14)', bd:'#3a9bdc'},
-  {key:'fort',    emoji:'🏰', label:'Fort',      bg:'rgba(167,139,250,0.14)',bd:'#a78bfa'},
-  {key:'palm',    emoji:'🌴', label:'Palm',      bg:'rgba(82,201,122,0.14)', bd:'#52c97a'},
-  {key:'skull',   emoji:'💀', label:'Skull Rock',bg:'rgba(232,93,93,0.14)',  bd:'#e85d5d'},
+  {key:'island', emoji:'🏝',label:'Island',   bg:'rgba(45,212,191,0.14)', bd:'#2dd4bf'},
+  {key:'rocks',  emoji:'🪨',label:'Rocks',    bg:'rgba(148,163,184,0.14)',bd:'#94a3b8'},
+  {key:'reef',   emoji:'🌊',label:'Reef',     bg:'rgba(58,155,220,0.14)', bd:'#3a9bdc'},
+  {key:'fort',   emoji:'🏰',label:'Fort',     bg:'rgba(167,139,250,0.14)',bd:'#a78bfa'},
+  {key:'palm',   emoji:'🌴',label:'Palm',     bg:'rgba(82,201,122,0.14)', bd:'#52c97a'},
+  {key:'skull',  emoji:'💀',label:'Skull Rock',bg:'rgba(232,93,93,0.14)', bd:'#e85d5d'},
 ];
-
 const TOOLS = [
-  {key:'ship',  emoji:'⚓', label:'Battleship',  bg:'rgba(245,200,66,0.14)', bd:'#f5c842'},
+  {key:'ship', emoji:'⚓',label:'Battleship', bg:'rgba(245,200,66,0.14)', bd:'#f5c842'},
   ...LANDMARKS,
-  {key:'clear', emoji:'✕',  label:'Clear cell',  bg:'rgba(255,255,255,0.05)',bd:'rgba(255,255,255,0.13)'},
+  {key:'clear',emoji:'✕', label:'Clear cell', bg:'rgba(255,255,255,0.05)',bd:'rgba(255,255,255,0.13)'},
 ];
-
 const DEFAULT_TEAMS = [
   'The Kraken','Sea Wolves','Storm Crows','Iron Anchors','Tide Breakers',
   'Reef Hunters','Deep Raiders','Coral Cutters','Wave Riders','Dusk Pirates',
@@ -446,82 +356,44 @@ const DEFAULT_TEAMS = [
   'Red Sails','Cape Fear','Bone Isle','Shark Bay','Ghost Ship'
 ];
 
-let DB = null;
-let fbPoll = null;
-let isSaving = false;
-let activeTool = 'ship';
+let DB=null,fbPoll=null,isSaving=false,activeTool='ship';
+let voyage={teamId:null,steps:0,stepsLeft:0,startPos:null,currentPos:null,trail:[],hits:[],log:[],phase:'select-team'};
 
-let voyage = {
-  teamId:null, steps:0, stepsLeft:0,
-  startPos:null, currentPos:null,
-  trail:[], hits:[], log:[],
-  phase:'select-team',
-};
-
-function go(view) {
-  document.querySelectorAll('.view').forEach(e => e.classList.remove('on'));
-  document.querySelectorAll('.ntab').forEach(e => e.classList.remove('on'));
-  
-  const targetView = document.getElementById('view-' + view);
-  if(targetView) targetView.classList.add('on');
-  
-  const tabs = document.querySelectorAll('.ntab');
-  if(view === 'voyage') tabs[0].classList.add('on');
-  if(view === 'board') tabs[1].classList.add('on');
-  if(view === 'settings') tabs[2].classList.add('on');
-  
-  if(view === 'settings') {
-    renderMiniGrid();
-    renderTeamEditor();
-    renderFleetStats();
-    renderToolPalette();
-    renderLegend();
-  }
-  if(view === 'board') {
-    renderBoard();
-  }
+function go(view){
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.ntab').forEach(e=>e.classList.remove('on'));
+  const tv=document.getElementById('view-'+view);
+  if(tv)tv.classList.add('on');
+  const tabs=document.querySelectorAll('.ntab');
+  if(view==='voyage')tabs[0].classList.add('on');
+  if(view==='board')tabs[1].classList.add('on');
+  if(view==='settings')tabs[2].classList.add('on');
+  if(view==='settings'){renderMiniGrid();renderTeamEditor();renderFleetStats();renderToolPalette();renderLegend();}
+  if(view==='board')renderBoard();
 }
 
 function mkDefault(){
-  const teams = DEFAULT_TEAMS.map((name,i)=>({id:i,name,points:0,shipsFound:0,stepsUsed:0,voyagesDone:0}));
+  const teams=DEFAULT_TEAMS.map((name,i)=>({id:i,name,points:0,shipsFound:0,stepsUsed:0,voyagesDone:0}));
   return{teams,grid:Array(GRID*GRID).fill(null),gridSize:GRID,version:0,updatedAt:Date.now()};
 }
 
 function ensureSchema(d){
-  if(!d) return mkDefault();
-  const size = d.gridSize || 10;
-  GRID = size;
-  const sizeInput = document.getElementById('grid-size-inp');
-  if(sizeInput) sizeInput.value = size;
-
-  const totalCells = size * size;
-  if(!d.grid) {
-    d.grid = Array(totalCells).fill(null);
-  } else if(Array.isArray(d.grid)) {
-    if(d.grid.length !== totalCells) {
-      const newGrid = Array(totalCells).fill(null);
-      for(let i = 0; i < Math.min(d.grid.length, totalCells); i++) {
-        newGrid[i] = d.grid[i];
-      }
-      d.grid = newGrid;
-    }
-  } else {
-    const newGrid = Array(totalCells).fill(null);
-    for(let i = 0; i < totalCells; i++) {
-      if(d.grid[i] !== undefined) {
-        newGrid[i] = d.grid[i];
-      }
-    }
-    d.grid = newGrid;
-  }
-
-  if(typeof d.version!=='number') d.version=0;
-  d.gridSize = size;
+  if(!d)return mkDefault();
+  const size=d.gridSize||10;
+  GRID=size;
+  const si=document.getElementById('grid-size-inp');
+  if(si)si.value=size;
+  const tc=size*size;
+  if(!d.grid){d.grid=Array(tc).fill(null);}
+  else if(Array.isArray(d.grid)){
+    if(d.grid.length!==tc){const g=Array(tc).fill(null);for(let i=0;i<Math.min(d.grid.length,tc);i++)g[i]=d.grid[i];d.grid=g;}
+  }else{const g=Array(tc).fill(null);for(let i=0;i<tc;i++)if(d.grid[i]!==undefined)g[i]=d.grid[i];d.grid=g;}
+  if(typeof d.version!=='number')d.version=0;
+  d.gridSize=size;
   d.teams=(d.teams||[]).map((t,i)=>({
     id:typeof t.id==='number'?t.id:i,
     name:t.name||DEFAULT_TEAMS[i]||'Team '+(i+1),
-    points:t.points||0,shipsFound:t.shipsFound||0,
-    stepsUsed:t.stepsUsed||0,voyagesDone:t.voyagesDone||0,
+    points:t.points||0,shipsFound:t.shipsFound||0,stepsUsed:t.stepsUsed||0,voyagesDone:t.voyagesDone||0,
   }));
   return d;
 }
@@ -529,58 +401,38 @@ function ensureSchema(d){
 function ci(r,c){return r*GRID+c;}
 function cellKey(r,c){return COLS[c]+(r+1);}
 function lmInfo(key){return LANDMARKS.find(l=>l.key===key)||null;}
-
 function lsLoad(){try{const r=localStorage.getItem('pf2');return r?JSON.parse(r):null;}catch(e){return null;}}
 function lsSave(d){try{localStorage.setItem('pf2',JSON.stringify(d));}catch(e){}}
 
 async function fbGet(){
-  try{
-    const r=await fetch(FB+'.json',{headers:{Accept:'application/json'}});
-    if(!r.ok)return null;
-    const etag=r.headers.get('ETag')||'';
-    return{data:await r.json(),etag};
-  }catch(e){return null;}
+  try{const r=await fetch(FB+'.json',{headers:{Accept:'application/json'}});if(!r.ok)return null;return{data:await r.json(),etag:r.headers.get('ETag')||''};}
+  catch(e){return null;}
 }
 async function fbPut(data,etag){
-  const headers={'Content-Type':'application/json'};
-  if(etag)headers['If-Match']=etag;
-  try{
-    const r=await fetch(FB+'.json',{method:'PUT',headers,body:JSON.stringify(data)});
-    if(r.status===412)return{ok:false,conflict:true};
-    if(!r.ok)return{ok:false,err:r.status};
-    return{ok:true,data:await r.json(),etag:r.headers.get('ETag')||''};
-  }catch(e){return{ok:false,err:e.message};}
+  const h={'Content-Type':'application/json'};if(etag)h['If-Match']=etag;
+  try{const r=await fetch(FB+'.json',{method:'PUT',headers:h,body:JSON.stringify(data)});
+    if(r.status===412)return{ok:false,conflict:true};if(!r.ok)return{ok:false,err:r.status};
+    return{ok:true,data:await r.json(),etag:r.headers.get('ETag')||''};}
+  catch(e){return{ok:false,err:e.message};}
 }
 
 function applyOp(state,op){
   const s=JSON.parse(JSON.stringify(state));
-  if(op.type==='setGrid'){
-    s.grid[op.idx]=op.val;
-  }else if(op.type==='changeGridSize'){
-    s.gridSize=op.size;
-    s.grid=Array(op.size*op.size).fill(null);
-  }else if(op.type==='clearGrid'){
+  if(op.type==='setGrid'){s.grid[op.idx]=op.val;}
+  else if(op.type==='changeGridSize'){s.gridSize=op.size;s.grid=Array(op.size*op.size).fill(null);}
+  else if(op.type==='clearGrid'){
     if(op.target==='all')s.grid=Array(GRID*GRID).fill(null);
     else if(op.target==='ship')s.grid=s.grid.map(v=>v==='ship'?null:v);
     else if(op.target==='landmark')s.grid=s.grid.map(v=>v&&v!=='ship'?null:v);
   }else if(op.type==='recordVoyage'){
     const t=s.teams.find(x=>x.id===op.teamId);
     if(t){t.points=+((t.points||0)+op.points).toFixed(2);t.shipsFound=(t.shipsFound||0)+op.shipsFound;t.stepsUsed=(t.stepsUsed||0)+op.stepsUsed;t.voyagesDone=(t.voyagesDone||0)+1;}
-  }else if(op.type==='addPoints'){
-    const t=s.teams.find(x=>x.id===op.teamId);
-    if(t)t.points=+((t.points||0)+op.points).toFixed(2);
-  }else if(op.type==='saveTeams'){
-    s.teams=op.teams;
-  }else if(op.type==='resetVoyages'){
-    s.teams.forEach(t=>{t.shipsFound=0;t.stepsUsed=0;t.voyagesDone=0;});
-  }else if(op.type==='resetPoints'){
-    s.teams.forEach(t=>{t.points=0;});
-  }else if(op.type==='resetAll'){
-    const f=mkDefault();s.teams=f.teams;s.grid=f.grid;s.gridSize=GRID;
-  }
-  s.version=(s.version||0)+1;
-  s.updatedAt=Date.now();
-  return s;
+  }else if(op.type==='addPoints'){const t=s.teams.find(x=>x.id===op.teamId);if(t)t.points=+((t.points||0)+op.points).toFixed(2);}
+  else if(op.type==='saveTeams'){s.teams=op.teams;}
+  else if(op.type==='resetVoyages'){s.teams.forEach(t=>{t.shipsFound=0;t.stepsUsed=0;t.voyagesDone=0;});}
+  else if(op.type==='resetPoints'){s.teams.forEach(t=>{t.points=0;});}
+  else if(op.type==='resetAll'){const f=mkDefault();s.teams=f.teams;s.grid=f.grid;s.gridSize=GRID;}
+  s.version=(s.version||0)+1;s.updatedAt=Date.now();return s;
 }
 
 async function atomicWrite(op,max=5){
@@ -602,8 +454,7 @@ function startPoll(){
   if(fbPoll)clearInterval(fbPoll);
   fbPoll=setInterval(async()=>{
     if(isSaving)return;
-    const got=await fbGet();
-    if(!got)return;
+    const got=await fbGet();if(!got)return;
     const remote=ensureSchema(got.data);
     if((remote.version||0)>(DB.version||0)){DB=remote;lsSave(DB);renderAll();setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());}
   },3500);
@@ -612,12 +463,14 @@ function setSS(s,lbl){
   document.getElementById('sdot').className='sdot'+(s==='ok'?'':s==='w'?' w':' e');
   document.getElementById('slabel').textContent=lbl;
 }
-let ct;function showConflict(){const b=document.getElementById('conflict-banner');b.classList.add('on');clearTimeout(ct);ct=setTimeout(()=>b.classList.remove('on'),3500);}
+let ct;
+function showConflict(){const b=document.getElementById('conflict-banner');b.classList.add('on');clearTimeout(ct);ct=setTimeout(()=>b.classList.remove('on'),3500);}
 
 function renderSeaGrid(){
   const clr=document.getElementById('col-labels-row');
+  // Spacer div (width:22px) matches .row-label width so column letters align perfectly with cells
   clr.innerHTML=`<div style="width:22px;flex-shrink:0;"></div>`+
-    COLS.slice(0, GRID).map(c=>`<div class="col-label">${c}</div>`).join('');
+    COLS.slice(0,GRID).map(c=>`<div class="col-label">${c}</div>`).join('');
 
   const sg=document.getElementById('sea-grid');
   sg.innerHTML='';
@@ -628,13 +481,9 @@ function renderSeaGrid(){
     rl.className='row-label';rl.textContent=r+1;row.appendChild(rl);
     for(let c=0;c<GRID;c++){
       const cell=document.createElement('div');
-      cell.className='cell';
-      cell.id=`cell-${r}-${c}`;
+      cell.className='cell';cell.id=`cell-${r}-${c}`;
       const val=DB.grid[ci(r,c)];
-      if(val&&val!=='ship'){
-        const lm=lmInfo(val);
-        if(lm)cell.textContent=lm.emoji;
-      }
+      if(val&&val!=='ship'){const lm=lmInfo(val);if(lm)cell.textContent=lm.emoji;}
       applyCellOverlay(cell,r,c);
       cell.addEventListener('click',()=>onCellClick(r,c));
       row.appendChild(cell);
@@ -649,33 +498,23 @@ function applyCellOverlay(cell,r,c){
   const isTrail=voyage.trail.some(p=>p.r===r&&p.c===c);
   const isCurrent=voyage.currentPos&&voyage.currentPos.r===r&&voyage.currentPos.c===c;
   const isStart=voyage.startPos&&voyage.startPos.r===r&&voyage.startPos.c===c;
-
   if(voyage.phase==='choose-start')cell.classList.add('start-hover');
-  if(isHit)cell.classList.add('hit');
-  else if(isTrail)cell.classList.add('trail');
+  if(isHit)cell.classList.add('hit');else if(isTrail)cell.classList.add('trail');
   if(isStart)cell.classList.add('start');
   if(isCurrent)cell.classList.add('current');
-
   if(isHit){cell.textContent='💥';}
-  else if(!isHit){
-    const val=DB.grid[ci(r,c)];
-    if(val&&val!=='ship'){const lm=lmInfo(val);if(lm)cell.textContent=lm.emoji;}
-    else if(!val)cell.textContent='';
-  }
+  else{const val=DB.grid[ci(r,c)];if(val&&val!=='ship'){const lm=lmInfo(val);if(lm)cell.textContent=lm.emoji;}else if(!val)cell.textContent='';}
 }
 
 function updateCell(r,c){
-  const cell=document.getElementById(`cell-${r}-${c}`);
-  if(!cell)return;
+  const cell=document.getElementById(`cell-${r}-${c}`);if(!cell)return;
   cell.textContent='';
   const val=DB.grid[ci(r,c)];
   if(val&&val!=='ship'){const lm=lmInfo(val);if(lm)cell.textContent=lm.emoji;}
   applyCellOverlay(cell,r,c);
 }
 
-function onCellClick(r,c){
-  if(voyage.phase==='choose-start')setStart(r,c);
-}
+function onCellClick(r,c){if(voyage.phase==='choose-start')setStart(r,c);}
 
 function renderTeamPanel(){
   document.getElementById('team-grid').innerHTML=DB.teams.map(t=>
@@ -705,63 +544,36 @@ function confirmSteps(){
 }
 
 function setStart(r,c){
-  voyage.startPos={r,c};voyage.currentPos={r,c};
-  voyage.trail=[{r,c}];voyage.phase='navigate';
+  voyage.startPos={r,c};voyage.currentPos={r,c};voyage.trail=[{r,c}];voyage.phase='navigate';
   document.getElementById('panel-start').style.display='none';
   document.getElementById('panel-nav').style.display='block';
   document.getElementById('dpad-container').style.display='block';
   document.getElementById('reset-voyage-btn').style.display='inline-flex';
   document.getElementById('grid-phase-label').textContent='';
   setPhase('Navigating — '+DB.teams.find(t=>t.id===voyage.teamId)?.name);
-
   const val=DB.grid[ci(r,c)];
-  if(val==='ship'){
-    voyage.hits.push({r,c});
-    addLog(`Started at ${cellKey(r,c)} — SHIP FOUND! 💥`,'hit');
-    showShipModal(r,c,1);
-  }else{
-    addLog(`Started at ${cellKey(r,c)}`,'');
-  }
-  renderSeaGrid();
-  updateNavPanel();
+  if(val==='ship'){voyage.hits.push({r,c});addLog(`Started at ${cellKey(r,c)} — SHIP FOUND! 💥`,'hit');showShipModal(r,c,1);}
+  else addLog(`Started at ${cellKey(r,c)}`,'');
+  renderSeaGrid();updateNavPanel();
 }
 
 function move(dir){
   if(voyage.stepsLeft<=0||voyage.phase!=='navigate')return;
   if(document.getElementById('ship-modal').classList.contains('on'))return;
-
   const{r,c}=voyage.currentPos;
   let nr=r,nc=c;
-  if(dir==='up')nr=r-1;
-  if(dir==='down')nr=r+1;
-  if(dir==='left')nc=c-1;
-  if(dir==='right')nc=c+1;
-
+  if(dir==='up')nr=r-1;if(dir==='down')nr=r+1;if(dir==='left')nc=c-1;if(dir==='right')nc=c+1;
   if(nr<0||nr>=GRID||nc<0||nc>=GRID){toast("Can't sail off the edge!");return;}
-
   const old=voyage.currentPos;
-  voyage.currentPos={r:nr,c:nc};
-  voyage.stepsLeft--;
-
+  voyage.currentPos={r:nr,c:nc};voyage.stepsLeft--;
   const val=DB.grid[ci(nr,nc)];
   const alreadyHit=voyage.hits.some(p=>p.r===nr&&p.c===nc);
   let isNewHit=false;
-  if(val==='ship'&&!alreadyHit){
-    voyage.hits.push({r:nr,c:nc});
-    isNewHit=true;
-  }
+  if(val==='ship'&&!alreadyHit){voyage.hits.push({r:nr,c:nc});isNewHit=true;}
   voyage.trail.push({r:nr,c:nc});
-
-  updateCell(old.r,old.c);
-  updateCell(nr,nc);
-
-  if(isNewHit){
-    addLog(`→ ${dir.toUpperCase()} to ${cellKey(nr,nc)} — SHIP FOUND! 💥`,'hit');
-    showShipModal(nr,nc,voyage.hits.length);
-  }else{
-    addLog(`→ ${dir.toUpperCase()} to ${cellKey(nr,nc)}`,'');
-  }
-
+  updateCell(old.r,old.c);updateCell(nr,nc);
+  if(isNewHit){addLog(`→ ${dir.toUpperCase()} to ${cellKey(nr,nc)} — SHIP FOUND! 💥`,'hit');showShipModal(nr,nc,voyage.hits.length);}
+  else addLog(`→ ${dir.toUpperCase()} to ${cellKey(nr,nc)}`,'');
   updateNavPanel();
   if(voyage.stepsLeft===0&&!isNewHit)finishVoyage();
 }
@@ -781,29 +593,21 @@ function updateNavPanel(){
 
 function addLog(msg,cls){
   const step=voyage.steps-voyage.stepsLeft;
-  voyage.log.unshift({msg,cls,step});
-  renderVoyageLog();
+  voyage.log.unshift({msg,cls,step});renderVoyageLog();
 }
-
 function renderVoyageLog(){
   const el=document.getElementById('vlog');if(!el)return;
-  el.innerHTML=voyage.log.map(e=>
-    `<div class="vlog-row"><div class="vlog-step">${e.step}</div><div class="vlog-msg ${e.cls||''}">${e.msg}</div></div>`
-  ).join('');
+  el.innerHTML=voyage.log.map(e=>`<div class="vlog-row"><div class="vlog-step">${e.step}</div><div class="vlog-msg ${e.cls||''}">${e.msg}</div></div>`).join('');
 }
 
 function showShipModal(r,c,totalFound){
-  const key=cellKey(r,c);
-  document.getElementById('modal-coords').textContent=key;
-  document.getElementById('modal-msg').textContent=
-    `Total ships found this voyage: ${totalFound}. You've earned ${totalFound} point${totalFound!==1?'s':''} so far!`;
+  document.getElementById('modal-coords').textContent=cellKey(r,c);
+  document.getElementById('modal-msg').textContent=`Total ships found this voyage: ${totalFound}. You've earned ${totalFound} point${totalFound!==1?'s':''} so far!`;
   document.getElementById('ship-modal').classList.add('on');
   ['d-up','d-down','d-left','d-right'].forEach(id=>document.getElementById(id).disabled=true);
 }
-
 function closeShipModal(){
-  document.getElementById('ship-modal').classList.remove('on');
-  updateNavPanel();
+  document.getElementById('ship-modal').classList.remove('on');updateNavPanel();
   if(voyage.stepsLeft===0)finishVoyage();
 }
 
@@ -812,29 +616,22 @@ function finishVoyage(){
   document.getElementById('panel-nav').style.display='none';
   document.getElementById('panel-done').style.display='block';
   setPhase('Voyage complete!');
-  const pts=voyage.hits.length;
-  const stepsUsed=voyage.steps-voyage.stepsLeft;
+  const pts=voyage.hits.length,stepsUsed=voyage.steps-voyage.stepsLeft;
   const tname=DB.teams.find(t=>t.id===voyage.teamId)?.name||'';
-  document.getElementById('done-summary').textContent=
-    `${tname} · ${pts} ship${pts!==1?'s':''} found · ${stepsUsed} steps used`;
+  document.getElementById('done-summary').textContent=`${tname} · ${pts} ship${pts!==1?'s':''} found · ${stepsUsed} steps used`;
   const op={type:'recordVoyage',teamId:voyage.teamId,points:pts,shipsFound:voyage.hits.length,stepsUsed};
   DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
   addLog(`Voyage done — ${pts} pts earned`,'done');
   ['d-up','d-down','d-left','d-right'].forEach(id=>document.getElementById(id).disabled=true);
 }
 
-function toggleBonus(){
-  const bi=document.getElementById('bonus-input');
-  bi.style.display=bi.style.display==='none'?'block':'none';
-}
+function toggleBonus(){const bi=document.getElementById('bonus-input');bi.style.display=bi.style.display==='none'?'block':'none';}
 function confirmBonus(){
   const v=parseFloat(document.getElementById('bonus-val').value)||0;
   if(v===0){toast('Enter a bonus amount');return;}
   const op={type:'addPoints',teamId:voyage.teamId,points:v};
   DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
-  toast(`+${v} bonus points`);
-  document.getElementById('bonus-input').style.display='none';
-  document.getElementById('bonus-val').value=0;
+  toast(`+${v} bonus points`);document.getElementById('bonus-input').style.display='none';document.getElementById('bonus-val').value=0;
 }
 
 function resetVoyage(){
@@ -850,11 +647,8 @@ function resetVoyage(){
   document.getElementById('grid-phase-label').textContent='';
   document.getElementById('steps-inp').value=40;
   document.getElementById('ship-modal').classList.remove('on');
-  setPhase('Ready to sail');
-  renderTeamPanel();
-  renderSeaGrid();
+  setPhase('Ready to sail');renderTeamPanel();renderSeaGrid();
 }
-
 function setPhase(t){document.getElementById('phase-text').textContent=t;}
 
 function renderBoard(){
@@ -875,18 +669,11 @@ function renderBoard(){
 }
 
 function changeGridSize(){
-  const val = parseInt(document.getElementById('grid-size-inp').value) || 10;
-  if(val < 5 || val > 20) { toast('Dimensions must be between 5 and 20!'); return; }
-  if(!confirm(`Resize fleet grid to ${val}×${val}? This will completely clear your active map configuration.`)) return;
-  
-  GRID = val;
-  const op = { type: 'changeGridSize', size: val };
-  DB = applyOp(DB, op);
-  lsSave(DB);
-  atomicWrite(op);
-  resetVoyage();
-  renderMiniGrid();
-  renderSeaGrid();
+  const val=parseInt(document.getElementById('grid-size-inp').value)||10;
+  if(val<5||val>20){toast('Dimensions must be between 5 and 20!');return;}
+  if(!confirm(`Resize fleet grid to ${val}×${val}? This will completely clear your active map configuration.`))return;
+  GRID=val;const op={type:'changeGridSize',size:val};
+  DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);resetVoyage();renderMiniGrid();renderSeaGrid();
   toast(`Dimensions adjusted to ${val}×${val}`);
 }
 
@@ -901,12 +688,7 @@ function renderToolPalette(){
   ).join('');
   updateToolInfo();
 }
-
-function setTool(k){
-  activeTool=k;
-  renderToolPalette();
-}
-
+function setTool(k){activeTool=k;renderToolPalette();}
 function updateToolInfo(){
   const t=TOOLS.find(x=>x.key===activeTool)||TOOLS[0];
   document.getElementById('tool-info').textContent=`Tool: ${t.label} (${t.emoji}) — click cells to place / toggle off`;
@@ -914,8 +696,9 @@ function updateToolInfo(){
 
 function renderMiniGrid(){
   const mcl=document.getElementById('mini-col-labels');
-  mcl.innerHTML=`<div style="width:22px;flex-shrink:0;"></div>`+
-    COLS.slice(0, GRID).map(c=>`<div style="width:30px;height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;font-family:var(--mono);color:var(--mu);">${c}</div>`).join('');
+  // Spacer div (width:20px) matches the row-label width in the mini grid so column letters align with cells
+  mcl.innerHTML=`<div style="width:20px;flex-shrink:0;"></div>`+
+    COLS.slice(0,GRID).map(c=>`<div style="width:30px;height:14px;display:flex;align-items:center;justify-content:center;font-size:9px;font-family:var(--mono);color:var(--mu);">${c}</div>`).join('');
 
   const mg=document.getElementById('mini-grid');
   mg.innerHTML='';
@@ -927,8 +710,7 @@ function renderMiniGrid(){
     rl.textContent=r+1;row.appendChild(rl);
     for(let c=0;c<GRID;c++){
       const cell=document.createElement('div');
-      cell.className='mini-cell';
-      cell.id=`mc-${r}-${c}`;
+      cell.className='mini-cell';cell.id=`mc-${r}-${c}`;
       setMiniCellContent(cell,DB.grid[ci(r,c)]);
       cell.addEventListener('click',()=>miniToggle(r,c));
       row.appendChild(cell);
@@ -939,41 +721,28 @@ function renderMiniGrid(){
 }
 
 function setMiniCellContent(cell,val){
-  cell.textContent='';
-  cell.style.background='';
-  cell.style.borderColor='';
-  if(val==='ship'){
-    cell.textContent='⚓';
-    cell.style.background='rgba(245,200,66,0.18)';
-    cell.style.borderColor='#f5c842';
-  }else if(val){
-    const lm=lmInfo(val);
-    if(lm){cell.textContent=lm.emoji;cell.style.background=lm.bg;cell.style.borderColor=lm.bd;}
-  }
+  cell.textContent='';cell.style.background='';cell.style.borderColor='';
+  if(val==='ship'){cell.textContent='⚓';cell.style.background='rgba(245,200,66,0.18)';cell.style.borderColor='#f5c842';}
+  else if(val){const lm=lmInfo(val);if(lm){cell.textContent=lm.emoji;cell.style.background=lm.bg;cell.style.borderColor=lm.bd;}}
 }
 
 function miniToggle(r,c){
-  const idx=ci(r,c);
-  const cur=DB.grid[idx];
+  const idx=ci(r,c),cur=DB.grid[idx];
   let newVal=null;
-  if(activeTool==='clear') newVal=null;
-  else if(activeTool==='ship') newVal=cur==='ship'?null:'ship';
+  if(activeTool==='clear')newVal=null;
+  else if(activeTool==='ship')newVal=cur==='ship'?null:'ship';
   else newVal=cur===activeTool?null:activeTool;
-  
   const op={type:'setGrid',idx,val:newVal};
   DB=applyOp(DB,op);lsSave(DB);
   const cell=document.getElementById(`mc-${r}-${c}`);
   if(cell)setMiniCellContent(cell,newVal);
-  updateCell(r,c);
-  renderFleetStats();
-  atomicWrite(op);
+  updateCell(r,c);renderFleetStats();atomicWrite(op);
 }
 
 function clearFleet(target){
   const label=target==='all'?'everything':target==='ship'?'all ships':'all landmarks';
   if(!confirm(`Clear ${label} from the grid?`))return;
-  const op={type:'clearGrid',target};
-  DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
+  const op={type:'clearGrid',target};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
   renderMiniGrid();renderSeaGrid();
 }
 
@@ -981,21 +750,16 @@ function renderFleetStats(){
   const ships=DB.grid.filter(v=>v==='ship').length;
   const landmarks=LANDMARKS.map(lm=>({lm,count:DB.grid.filter(v=>v===lm.key).length})).filter(x=>x.count>0);
   const el=document.getElementById('fleet-stats');
-  if(el)el.innerHTML=`⚓ ${ships} ship square${ships!==1?'s':''}\n`+
-    landmarks.map(x=>`${x.lm.emoji} ${x.count} ${x.lm.label}`).join('\n')+
-    `\n${(GRID*GRID)-ships-landmarks.reduce((a,x)=>a+x.count,0)} empty squares`;
+  if(el)el.innerHTML=`⚓ ${ships} ship square${ships!==1?'s':''}\n`+landmarks.map(x=>`${x.lm.emoji} ${x.count} ${x.lm.label}`).join('\n')+`\n${(GRID*GRID)-ships-landmarks.reduce((a,x)=>a+x.count,0)} empty squares`;
   const sc=document.getElementById('ship-count-label');
   if(sc)sc.textContent=`${ships} ship squares · ${landmarks.reduce((a,x)=>a+x.count,0)} landmark tiles`;
 }
 
 function renderLegend(){
-  const el=document.getElementById('legend-list');
-  if(!el)return;
-  el.innerHTML=
-    `<div>⚓ Battleship — hidden, +1 pt when found</div>`+
+  const el=document.getElementById('legend-list');if(!el)return;
+  el.innerHTML=`<div>⚓ Battleship — hidden, +1 pt when found</div>`+
     LANDMARKS.map(lm=>`<div>${lm.emoji} ${lm.label} — visible landmark</div>`).join('')+
-    `<div style="margin-top:4px;">🚢 Your ship's current position</div>`+
-    `<div>💥 Ship discovered!</div>`;
+    `<div style="margin-top:4px;">🚢 Your ship's current position</div><div>💥 Ship discovered!</div>`;
 }
 
 function renderTeamEditor(){
@@ -1010,64 +774,43 @@ function renderTeamEditor(){
 }
 
 function saveTeamNames(){
-  const teams=DB.teams.map(t=>{
-    const v=(document.getElementById('tn-'+t.id)?.value||'').trim();
-    return{...t,name:v||t.name};
-  });
-  const op={type:'saveTeams',teams};
-  DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
-  renderTeamPanel();toast('Team names saved');
+  const teams=DB.teams.map(t=>{const v=(document.getElementById('tn-'+t.id)?.value||'').trim();return{...t,name:v||t.name};});
+  const op={type:'saveTeams',teams};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);renderTeamPanel();toast('Team names saved');
 }
-
-// Danger Zone Controls
 function addTeam(){
   const newId=DB.teams.length>0?Math.max(...DB.teams.map(t=>t.id))+1:0;
   const newTeam={id:newId,name:'Team '+(newId+1),points:0,shipsFound:0,stepsUsed:0,voyagesDone:0};
-  const teams=[...DB.teams,newTeam];
-  const op={type:'saveTeams',teams};
-  DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
-  renderTeamEditor();renderTeamPanel();toast('Team added');
+  const teams=[...DB.teams,newTeam];const op={type:'saveTeams',teams};
+  DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);renderTeamEditor();renderTeamPanel();toast('Team added');
 }
-
 function deleteTeam(id){
   const t=DB.teams.find(x=>x.id===id);
   if(!confirm(`Delete "${t?.name}"? This cannot be undone.`))return;
-  const teams=DB.teams.filter(x=>x.id!==id);
-  const op={type:'saveTeams',teams};
-  DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);
-  if(voyage.teamId===id)resetVoyage();
+  const teams=DB.teams.filter(x=>x.id!==id);const op={type:'saveTeams',teams};
+  DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);if(voyage.teamId===id)resetVoyage();
   renderTeamEditor();renderTeamPanel();toast('Team deleted');
 }
-
 function resetAllVoyages(){if(!confirm('Reset voyage stats for all teams?'))return;const op={type:'resetVoyages'};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);toast('Voyage stats reset');}
 function resetAllPoints(){if(!confirm('Reset all points to 0?'))return;const op={type:'resetPoints'};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);toast('Points reset');}
 function resetEverything(){if(!confirm('Reset EVERYTHING — grid, teams, points?'))return;const op={type:'resetAll'};DB=applyOp(DB,op);lsSave(DB);atomicWrite(op);resetVoyage();renderMiniGrid();renderTeamEditor();toast('Everything reset');}
 
 function renderAll(){
-  renderTeamPanel();
-  renderSeaGrid();
-  renderBoard();
-  if(document.getElementById('view-settings').classList.contains('on')){
-    renderMiniGrid();renderTeamEditor();renderFleetStats();
-  }
+  renderTeamPanel();renderSeaGrid();renderBoard();
+  if(document.getElementById('view-settings').classList.contains('on')){renderMiniGrid();renderTeamEditor();renderFleetStats();}
 }
 
 let tt;
 function toast(m){const e=document.getElementById('toast');e.textContent=m;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),2600);}
 
 (async function boot(){
-  DB=ensureSchema(lsLoad()||mkDefault());
-  renderAll();
-  setSS('w','Connecting…');
+  DB=ensureSchema(lsLoad()||mkDefault());renderAll();setSS('w','Connecting…');
   const got=await fbGet();
   if(got&&got.data){
     const remote=ensureSchema(got.data);
     if((remote.version||0)>=(DB.version||0)){DB=remote;lsSave(DB);renderAll();}
     else await fbPut(DB,got.etag);
     setSS('ok','Synced '+new Date(DB.updatedAt).toLocaleTimeString());
-  }else{
-    setSS(got?'ok':'e',got?'Synced':'Cannot reach Firebase');
-  }
+  }else{setSS(got?'ok':'e',got?'Synced':'Cannot reach Firebase');}
   startPoll();
 })();
 </script>
